@@ -1,0 +1,3 @@
+[engine:junit-jupiter]/[class:com.ibm.spring_boot_simple_project.dao.CollegeDaoTest]/[method:saveCollegeDaoTest()]
+[engine:junit-jupiter]/[class:com.ibm.spring_boot_simple_project.dao.CollegeDaoTest]/[method:fetchCollegeByIdFoundTest()]
+[engine:junit-jupiter]/[class:com.ibm.spring_boot_simple_project.SpringBootSimpleProjectApplicationTests]/[method:contextLoads()]

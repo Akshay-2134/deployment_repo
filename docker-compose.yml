@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  # MySQL Database Service
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: Akshay@123
+      MYSQL_DATABASE: spring-boot-simple
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Akshay@123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - spring-boot-network
+
+  # Spring Boot Application Service
+  app:
+    image: openjdk:17-jdk-alpine
+    container_name: spring-boot-app
+    depends_on:
+      - mysql-db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/spring-boot-simple
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Akshay@123
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    ports:
+      - "8182:8182"
+    networks:
+      - spring-boot-network
+
+volumes:
+  mysql_data:
+
+networks:
+  spring-boot-network:
+    driver: bridge
